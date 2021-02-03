@@ -1,0 +1,13 @@
+{
+  "name": "JustWatch for Filmweb",
+  "description": "Add JustWatch box to filmweb entries to check streaming options across the globe",
+  "manifest_version": 2,
+  "background": { "scripts": ["background/index.ts"] },
+  "content_scripts": [
+    {
+      "js": ["content/wantToSee.ts"],
+      "matches": ["https://www.filmweb.pl/user/*/wantToSee*"]
+    }
+  ],
+  "permissions": ["<all_urls>"]
+}

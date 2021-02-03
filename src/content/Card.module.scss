@@ -1,0 +1,46 @@
+.container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 0;
+  padding: 0.75rem 1rem;
+}
+
+.row + .row {
+  padding-top: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.offerTypeRow {
+  margin-left: 1rem;
+  display: grid;
+  grid-template-columns: calc(144px - 2rem) auto;
+  align-items: baseline;
+}
+
+.offerTypeRow + .offerTypeRow {
+  padding-top: 0.75rem;
+}
+
+.offerType {
+  font-weight: bold;
+}
+
+.offerList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.offerList > a {
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.offerList > a:hover {
+  border: 1px solid #e7a90f;
+}
