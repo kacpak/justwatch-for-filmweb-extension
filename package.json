@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "release": "cross-env NODE_ENV=production rollup -c",
+    "preversion": "cross-env NODE_ENV=production rollup -c",
     "start": "rollup -c -w"
   },
   "dependencies": {

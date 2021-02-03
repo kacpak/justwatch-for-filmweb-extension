@@ -22,7 +22,7 @@ export async function queryJustWatch(
   const cachedValue = await getItem<JustWatchResult>(cacheId)
 
   if (cachedValue && new Date() < new Date(cachedValue.expiresAt)) {
-    // return cachedValue
+    return cachedValue
   }
 
   const items = await search(movie.title, locale)
