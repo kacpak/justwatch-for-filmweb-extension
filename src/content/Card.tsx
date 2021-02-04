@@ -1,12 +1,12 @@
 import ReactDOM from 'react-dom'
-import React from 'react'
+import React, { useState } from 'react'
 import { Movie } from './models/Movie'
 import styles from './Card.module.scss'
 import { JustWatchResult } from './services/justWatch'
 import { ItemModel, OfferModel } from './models/ItemModel'
 import { getProviderName } from './services/providers'
 
-const TITLES_COUNT = 3
+const TITLES_COUNT = 1
 
 const itemHasOffers = (item: ItemModel) =>
   item.flatrate.length || item.rent.length
@@ -39,8 +39,8 @@ function MovieOfferTypeRow({ offers, label }: MovieOfferTypeRowProps) {
     <div className={styles.offerTypeRow}>
       <div className={styles.offerType}>{label}</div>
       <div className={styles.offerList}>
-        {offers.map((offer) => (
-          <a href={offer.url}>
+        {offers.map((offer, index) => (
+          <a key={index} href={offer.url}>
             {getLabel(offer)} [{offer.locale.slice(3)}]
           </a>
         ))}
@@ -54,7 +54,10 @@ interface CardProps {
   justWatchResult: JustWatchResult
 }
 function Card({ movie, justWatchResult }: CardProps) {
-  const movies = justWatchResult.movies.slice(0, TITLES_COUNT)
+  const [showAll, setShowAll] = useState(false)
+  const movies = showAll
+    ? justWatchResult.movies
+    : justWatchResult.movies.slice(0, TITLES_COUNT)
 
   if (movies.length === 0) {
     return <span>There were no movies found in JustWatch database</span>
@@ -64,7 +67,9 @@ function Card({ movie, justWatchResult }: CardProps) {
     <>
       {movies.map((movie) => (
         <div key={movie.id} className={styles.row}>
-          <div className={styles.title}>{movie.title}</div>
+          <div className={styles.title}>
+            {movie.title} [{movie.releaseYear}]
+          </div>
           {itemHasOffers(movie) ? (
             <>
               <MovieOfferTypeRow label={'Stream'} offers={movie.flatrate} />
@@ -75,6 +80,13 @@ function Card({ movie, justWatchResult }: CardProps) {
           )}
         </div>
       ))}
+      {justWatchResult.movies.length > TITLES_COUNT && (
+        <div className={styles.showMore}>
+          <button onClick={() => setShowAll((b) => !b)}>
+            {showAll ? 'Show less ↑' : 'Show more ↓'}
+          </button>
+        </div>
+      )}
     </>
   )
 }

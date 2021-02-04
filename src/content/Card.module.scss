@@ -39,8 +39,26 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   padding: 0.25rem 0.5rem;
+
+  &[href*='netflix'] {
+    background: #e50914;
+    border-color: #e50914;
+    color: #fff;
+  }
+
+  &[href*='hbogo'] {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+  }
 }
 
 .offerList > a:hover {
   border: 1px solid #e7a90f;
+}
+
+.showMore {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
 }

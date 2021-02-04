@@ -1,6 +1,7 @@
 export interface Movie {
-  id: string;
-  title: string;
-  originalTitle?: string;
-  element: HTMLDivElement;
+  id: string
+  title: string
+  originalTitle?: string
+  element: HTMLDivElement
+  year: string
 }
