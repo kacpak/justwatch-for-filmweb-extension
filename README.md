@@ -18,5 +18,5 @@ across the globe
   ![Instruction 2](./.github/installation/instruction02.jpg)
 - Drag the downloaded .zip file directly onto the "Extensions" page
   ![Instruction 3](./.github/installation/instruction03.jpg)
-- Done! You should now see that the extensions was installed
+- Done! You should now see that the extension was installed
   ![Instruction 4](./.github/installation/instruction04.jpg)
